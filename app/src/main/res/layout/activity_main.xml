@@ -28,4 +28,72 @@
         android:text="Z-Axis: "
         android:textSize="16sp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <!-- X-Axis -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X-Axis: "
+                android:textSize="16sp"/>
+
+            <View
+                android:id="@+id/barViewXAxis"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/teal_200"
+                />
+        </LinearLayout>
+
+        <!-- Y-Axis -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Y-Axis: "
+                android:textSize="16sp"/>
+
+            <View
+                android:id="@+id/barViewYAxis"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/teal_200"
+                />
+        </LinearLayout>
+
+        <!-- Z-Axis -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Z-Axis: "
+                android:textSize="16sp"/>
+
+            <View
+                android:id="@+id/barViewZAxis"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/teal_200"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
+
