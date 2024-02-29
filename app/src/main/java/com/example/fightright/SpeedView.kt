@@ -25,6 +25,7 @@ fun speedTextViews(xAxis: Float, yAxis: Float, zAxis: Float){
         SpeedTextView(label = "Punching Speed: ", speed = speed)
     }
 }
+
     @Composable
     fun SpeedTextView(label: String, speed: Float){
         Row (
@@ -35,22 +36,45 @@ fun speedTextViews(xAxis: Float, yAxis: Float, zAxis: Float){
             Spacer(modifier = Modifier.width(30.dp))
         }
     }
+@Composable
+fun sortedPunchesTextViews(sortedPunches: List<Punch>?) {
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        sortedPunches?.forEachIndexed { index, punch ->
+            PunchTextView(label = "Punch ${index + 1}: Speed - ${punch.speedChange}")
+        }
+    }
+}
+
+@Composable
+fun PunchTextView(label: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(text = label, fontSize = 16.sp)
+        Spacer(modifier = Modifier.width(30.dp))
+    }
+}
 
 data class Punch(val timestamp: Long, val speedChange: Float)
 
 var sortedPunches = listOf<Punch>()
 
 // Function to calculate speed changes and identify punches
+
 fun processAccelerometerData(xAxis: Float, yAxis: Float, zAxis: Float, speedChange: Float, currentTime: Long) {
     // Calculate speed change based on accelerometer data
     val currentSpeed = calculatePunchSpeed(xAxis, yAxis, zAxis)
 
     // Check if the speed change exceeds a certain threshold to identify a punch
-    val threshold = 5.0f // Adjust the threshold as needed
+    // Read about threshold in Wiki.
+    val threshold = 9.0f
     if (speedChange > threshold) {
-        // Store the punch information
+      // If speed is greater than the threshold. The punch will be registered.
         val punch = Punch(currentTime, speedChange)
-        // Add punch to the list of punches or perform further processing
         sortedPunches += punch
         sortedPunches = sortedPunches.sortedByDescending {it.speedChange}
     }
@@ -73,10 +97,6 @@ fun calculatePunchSpeed(xAxis: Float, yAxis: Float, zAxis: Float): Float {
     return speed
 }
 
-// Function to calculate speed change
 fun calculateSpeedChange(previousSpeed: Float, currentSpeed: Float, deltaTimeMillis: Long): Float {
-    // Calculate speed change based on current and previous speed values
-    // You can compare currentSpeed with the previous speed value stored in a variable
-    // Return the magnitude of speed change
     return currentSpeed - previousSpeed
 }

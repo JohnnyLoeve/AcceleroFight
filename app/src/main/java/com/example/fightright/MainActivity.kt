@@ -71,15 +71,13 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
 
-
-
         // Check if the sensor type is Linear acceleration
         if (event?.sensor?.type == Sensor.TYPE_LINEAR_ACCELERATION) {
 
             val currentTimeMillis = System.currentTimeMillis()
             val deltaTimeMillis = currentTimeMillis - previousTimeMillis
 
-            // Access accelerometer values: event.values[0], event.values[1], event.values[2]
+            // Access accelerometer values
             xAxis = event.values[0]
             yAxis = event.values[1]
             zAxis = event.values[2]

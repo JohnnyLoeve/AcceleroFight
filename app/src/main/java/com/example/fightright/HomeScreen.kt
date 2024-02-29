@@ -18,5 +18,6 @@ fun MainScreen(xAxis: Float, yAxis: Float, zAxis: Float, context: Context) {
         AccelerometerDataTextViews(xAxis, yAxis, zAxis, context)
         BarViews(xAxis, yAxis, zAxis, context)
         speedTextViews(xAxis, yAxis, zAxis)
+        sortedPunchesTextViews(sortedPunches)
     }
 }
